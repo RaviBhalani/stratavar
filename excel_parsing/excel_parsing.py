@@ -1,6 +1,5 @@
 from datetime import datetime
 from json import dumps
-from sys import argv
 
 from xlrd import open_workbook, xldate_as_tuple
 
