@@ -18,7 +18,21 @@ class TestParseSpreadSheet(TestCase):
         sheet_parser.get_spread_sheet()
         sheet_parser.parse_spread_sheet()
         self.assertNotIn('Items', sheet_parser.sheet_data)
-        # self.assertEqual(len(sheet_parser.sheet_data['Items']), 0)
+
+    def test_excel_file_with_more_data(self):
+        sheet_parser = ParseSpreadSheet()
+        sheet_parser.sheet = 'excel_files/Test File 3.xlsx'
+        sheet_parser.get_spread_sheet()
+        sheet_parser.parse_spread_sheet()
+        self.assertEqual(len(sheet_parser.sheet_data['Items']), 12)
+        self.assertEqual(sheet_parser.sheet_data['Ship From'], 'India')
+
+    def test_excel_file_with_non_required_fields(self):
+        sheet_parser = ParseSpreadSheet()
+        sheet_parser.sheet = 'excel_files/Test File 3.xlsx'
+        sheet_parser.get_spread_sheet()
+        sheet_parser.parse_spread_sheet()
+        self.assertNotIn('Quantity', sheet_parser.sheet_data['Items'][0])
 
 
 if __name__ == '__main__':
