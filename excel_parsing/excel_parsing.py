@@ -122,8 +122,9 @@ class ParseSpreadSheet:
             if self.break_loop:
                 break
 
-        # Convert float date received from spreadsheet due to xlrd library to yyyy-mm-dd format.
-        self.sheet_data[self.date_key] = datetime(*xldate_as_tuple(self.sheet_data[self.date_key], 1)).date().__str__()
+        if self.date_key in self.sheet_data:
+            # Convert float date received from spreadsheet due to xlrd library to yyyy-mm-dd format.
+            self.sheet_data[self.date_key] = datetime(*xldate_as_tuple(self.sheet_data[self.date_key], 1)).date().__str__()
 
     def parse_item_data(self) -> None:
         self.break_loop = False
