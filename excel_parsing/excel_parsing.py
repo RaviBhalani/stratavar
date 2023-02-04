@@ -20,7 +20,7 @@ class ParseSpreadSheet:
 
         # Sheet variables
         self.sheet_obj = None
-        self.sheet = 'Python Skill Test.xlsx'
+        self.sheet = 'excel_files/Python Skill Test.xlsx'
         self.sheet_data = dict()
         self.sheet_no = 0
         self.item_table_header_row = None
