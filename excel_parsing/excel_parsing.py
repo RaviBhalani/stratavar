@@ -20,6 +20,7 @@ class ParseSpreadSheet:
 
         # Sheet variables
         self.sheet_obj = None
+        self.sheet = 'Python Skill Test.xlsx'
         self.sheet_data = dict()
         self.sheet_no = 0
         self.item_table_header_row = None
@@ -36,12 +37,12 @@ class ParseSpreadSheet:
 
         self.error_list = list()
 
-    def get_spread_sheet(self, sheet_path: str) -> None:
+    def get_spread_sheet(self) -> None:
         """
         :return:
         This function reads a given spreadsheet file and accesses its sheet for the given index.
         """
-        self.sheet_obj = open_workbook(sheet_path).sheet_by_index(self.sheet_no)
+        self.sheet_obj = open_workbook(self.sheet).sheet_by_index(self.sheet_no)
 
     def convert_to_json(self) -> str:
         """
@@ -187,6 +188,6 @@ class ParseSpreadSheet:
 
 if __name__ == '__main__':
     sheet_parser = ParseSpreadSheet()
-    sheet_parser.get_spread_sheet(argv[1])
+    sheet_parser.get_spread_sheet()
     sheet_parser.parse_spread_sheet()
     print(sheet_parser.convert_to_json())
