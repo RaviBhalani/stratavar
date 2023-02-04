@@ -8,8 +8,10 @@ class DistiQuoteMergeSimuation:
         self.DistiDict = dict()
         self.merged_list = list()
 
-        self.BoM = [{1: 5}, {2: 6}, {1: 3}, {2: 1}, {3: 5}, {4: 9}]
-        self.Disti = [{1: 10}, {3: 1}, {5: 5}]
+        # Uncomment these lines to run the program. These are commented as input is given through testcases as asked in
+        # the interview question.
+        # self.BoM = [{1: 5}, {2: 6}, {1: 3}, {2: 1}, {3: 5}, {4: 9}]
+        # self.Disti = [{1: 10}, {3: 1}, {5: 5}]
 
     def merge_part_lists(self) -> None:
         """
