@@ -8,11 +8,6 @@ class DistiQuoteMergeSimuation:
         self.DistiDict = dict()
         self.merged_list = list()
 
-        # Uncomment these lines to run the program. These are commented as input is given through testcases as asked in
-        # the interview question.
-        # self.BoM = [{1: 5}, {2: 6}, {1: 3}, {2: 1}, {3: 5}, {4: 9}]
-        # self.Disti = [{1: 10}, {3: 1}, {5: 5}]
-
     def merge_part_lists(self) -> None:
         """
         :return:
@@ -32,10 +27,10 @@ class DistiQuoteMergeSimuation:
                 else:
                     disti_qty = self.DistiDict[bom_pn]
                     del self.DistiDict[bom_pn]
-                error = False
             else:
-                disti_qty, error = None, True
+                disti_qty = None
 
+            error = False if bom_qty == disti_qty else True
             self.merged_list.append({
                 'bom_pn': bom_pn, 'bom_qty': bom_qty, 'disti_pn': bom_pn, 'disti_qty': disti_qty, 'error': error
             })
@@ -43,7 +38,7 @@ class DistiQuoteMergeSimuation:
         # Iterate over remaining Disti line part numbers. These include unique and common ones.
         for part in self.DistiDict:
             self.merged_list.append({
-                'bom_pn': part, 'bom_qty': None, 'disti_pn': part, 'disti_qty': self.DistiDict[part], 'error': False
+                'bom_pn': part, 'bom_qty': None, 'disti_pn': part, 'disti_qty': self.DistiDict[part], 'error': True
             })
 
     def print_merged_lines(self) -> None:
